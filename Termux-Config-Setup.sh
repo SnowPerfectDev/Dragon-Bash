@@ -82,6 +82,7 @@ baixar_e_aplicar "$URL_TERMUX_PROPERTIES" "termux.properties" "$HOME/.termux"
 # Baixa e aplica a configuração do arquivo .nanorc
 baixar_e_aplicar "$URL_NANORC" ".nanorc" "$HOME"
 # Baixa e aplica a configuração do arquivo colors.properties
-baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "/data/data/com.termux/files/usr/etc"
+mkdir -p "$HOME/.termux"
+baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "$HOME/.termux"
 # Baixa e aplica o arquivo .bashrc
-baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME
+baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
