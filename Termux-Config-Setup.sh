@@ -93,13 +93,9 @@ if [ -e "/data/data/com.termux/files/usr/bin/update-termux-config" ]; then
     echo "Script de atualização antigo removido."
 fi
 
-# Copia o script para a pasta /data/data/com.termux/files/usr/bin/ apenas se ainda não estiver lá
-if [ ! -e "/data/data/com.termux/files/usr/bin/update-termux-config" ]; then
-    cp "$0" "/data/data/com.termux/files/usr/bin/update-termux-config"
-    chmod +x "/data/data/com.termux/files/usr/bin/update-termux-config"
-    echo "Novo script de atualização copiado para /data/data/com.termux/files/usr/bin/"
-else
-    echo "Script de atualização já existe em /data/data/com.termux/files/usr/bin/"
-fi
+# Copia o script para a pasta /data/data/com.termux/files/usr/bin/
+cp "$0" "/data/data/com.termux/files/usr/bin/update-termux-config"
+chmod +x "/data/data/com.termux/files/usr/bin/update-termux-config"
+echo "Novo script de atualização copiado para /data/data/com.termux/files/usr/bin/"
 
 echo -e "${verde}Configurações concluídas!${reset}"
