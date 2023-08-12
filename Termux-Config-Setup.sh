@@ -87,15 +87,4 @@ baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "$HOME/.termux"
 # Baixa e aplica o arquivo .bashrc
 baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
 
-# Remove o script de atualização antigo, se existir
-if [ -e "/data/data/com.termux/files/usr/bin/update-termux-config" ]; then
-    rm -f "/data/data/com.termux/files/usr/bin/update-termux-config"
-    echo "Script de atualização antigo removido."
-fi
-
-# Copia o script para a pasta /data/data/com.termux/files/usr/bin/
-cp "$0" "/data/data/com.termux/files/usr/bin/update-termux-config"
-chmod +x "/data/data/com.termux/files/usr/bin/update-termux-config"
-echo "Novo script de atualização copiado para /data/data/com.termux/files/usr/bin/"
-
 echo -e "${verde}Configurações concluídas!${reset}"
