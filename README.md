@@ -16,7 +16,7 @@ Este script foi desenvolvido para uso pessoal e customização das configuraçõ
 1. **Clonar o Repositório**: Comece clonando o seu repositório do GitHub para o seu dispositivo Termux.
 
     ```bash
-    git clone https://github.com/SeuNomeDeUsuário/Termux-Config-Setup.git
+    git clone https://github.com/SnowPerfectDev/Termux-Config-Setup.git
     ```
 
 2. **Executar o Script**: Navegue até o diretório onde o script `termux-config-update` está localizado e execute-o.
