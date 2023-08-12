@@ -11,7 +11,7 @@ reset="\033[0m"
 remove_files() {
     echo "Removendo arquivos..."
 
-    cd ../usr/etc/
+    cd ~/../usr/etc/
 
     # Verificar se os arquivos existem antes de removê-los
     if [ -e motd.sh.dpkg-old ]; then
