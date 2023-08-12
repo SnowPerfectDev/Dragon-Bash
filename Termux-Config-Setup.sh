@@ -69,6 +69,8 @@ URL_BASH_BASHRC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-
 URL_TERMUX_PROPERTIES="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/termux-configs/termux.properties"
 # URL para .nanorc
 URL_NANORC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/.nanorc"
+# URL para colors.properties
+URL_COLORS_PROPERTIES="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/colors.properties"
 # URL para .bashrc (URL principal do repositório)
 URL_BASHRC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/.bashrc"
 
@@ -79,11 +81,7 @@ mkdir -p "$HOME/.termux"
 baixar_e_aplicar "$URL_TERMUX_PROPERTIES" "termux.properties" "$HOME/.termux"
 # Baixa e aplica a configuração do arquivo .nanorc
 baixar_e_aplicar "$URL_NANORC" ".nanorc" "$HOME"
+# Baixa e aplica a configuração do arquivo colors.properties
+baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "/data/data/com.termux/files/usr/etc"
 # Baixa e aplica o arquivo .bashrc
-baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
-
-# Copia o script para a pasta /data/data/com.termux/files/usr/bin/
-cp "$0" "/data/data/com.termux/files/usr/bin/update-termux-config"
-chmod +x "/data/data/com.termux/files/usr/bin/update-termux-config"
-
-echo -e "${verde}Configurações concluídas!${reset}"
+baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME
