@@ -49,11 +49,14 @@ print_logo() {
                                             .'
                                              .
 "
-    if [ -n "$(command -v lolcat)" ]; then
-        echo "$logo" | lolcat
-    else
-        echo "$logo"
-    fi
+# Verificar se o lolcat está disponível
+if [ -n "$(command -v lolcat)" ]; then
+    # Usar lolcat para exibir o logotipo com cores
+    echo "$logo" | lolcat
+else
+    # Usar cor azul definida manualmente para exibir o logotipo
+    echo -e "${blue}$logo"
+fi
 }
 # Exibir o logotipo
 print_logo
