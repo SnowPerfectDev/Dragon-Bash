@@ -71,6 +71,8 @@ URL_TERMUX_PROPERTIES="https://raw.githubusercontent.com/SnowPerfectDev/Termux-C
 URL_NANORC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/.nanorc"
 # URL para colors.properties
 URL_COLORS_PROPERTIES="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/color-schemes/colors.properties"
+# URL para font.ttf
+URL_FONT_TTF="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/font.ttf"
 # URL para .bashrc (URL principal do repositório)
 URL_BASHRC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/.bashrc"
 
@@ -84,6 +86,9 @@ baixar_e_aplicar "$URL_NANORC" ".nanorc" "$HOME"
 # Baixa e aplica a configuração do arquivo colors.properties
 mkdir -p "$HOME/.termux"
 baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "$HOME/.termux"
+# Baixa e aplica o arquivo font.ttf
+mkdir -p "$HOME/.termux"
+baixar_e_aplicar "$URL_FONT_TTF" "font.ttf" "$HOME/.termux"
 # Baixa e aplica o arquivo .bashrc
 baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
 
