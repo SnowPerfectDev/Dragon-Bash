@@ -1,54 +1,89 @@
-### Termux Config Setup
+#!/bin/bash
 
-O **Termux Config Setup** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do seu repositório no GitHub e aplicá-las automaticamente ao ambiente Termux.
+# Script para configurar as opções do Termux
 
----
+# Cores ANSI
+vermelho="\033[1;31m"
+verde="\033[1;32m"
+reset="\033[0m"
 
-### Uso Pessoal
+# Função para remover arquivos dentro da pasta ../usr/etc/
+remove_files() {
+    echo "Removendo arquivos..."
 
-Este script foi desenvolvido para uso pessoal e customização das configurações do Termux. Ele é fornecido como uma ferramenta de conveniência para simplificar o processo de atualização de configurações específicas. Sinta-se à vontade para adaptá-lo conforme suas necessidades.
+    cd ../usr/etc/
 
----
+    # Verificar se os arquivos existem antes de removê-los
+    if [ -e motd.sh.dpkg-old ]; then
+        rm -f motd.sh.dpkg-old
+        echo "Arquivo motd.sh.dpkg-old removido."
+    fi
 
-### Dependências
+    if [ -e motd-playstore ]; then
+        rm -f motd-playstore
+        echo "Arquivo motd-playstore removido."
+    fi
 
-Para garantir que o script funcione corretamente, certifique-se de ter as seguintes dependências instaladas:
+    if [ -e motd.sh ]; then
+        rm -f motd.sh
+        echo "Arquivo motd.sh removido."
+    fi
 
-- **curl**: Uma ferramenta de linha de comando para transferir dados com URLs. O script usa o `curl` para fazer o download dos arquivos de configuração.
+    if [ -e motd ]; then
+        rm -f motd
+        echo "Arquivo motd removido."
+    fi
 
-- **git**: Um sistema de controle de versão distribuído. O script pode precisar do `git` para clonar o repositório do GitHub que contém as configurações.
+    echo "Arquivos removidos com sucesso."
+    cd - >/dev/null
+}
 
-- **ruby (opcional)**: O `lolcat` é uma ferramenta que colore a saída do terminal. Se desejar usar o `lolcat` para adicionar cores ao output do script, você precisará do Ruby instalado para instalar o `lolcat`.
+# Função para fazer backup de um arquivo
+fazer_backup() {
+    if [ -e "$1" ]; then
+        cp "$1" "$1.bkp"
+        echo -e "${vermelho}Backup de $1 criado como $1.bkp${reset}"
+    fi
+}
 
-- **tput**: Uma ferramenta que oferece controle da tela terminal para manipular cores, cursor, entre outros. O script pode usar o `tput` para melhorar a formatação do output.
+# Função para baixar e aplicar uma configuração
+baixar_e_aplicar() {
+    URL="$1"
+    ARQUIVO="$2"
+    PASTA_DESTINO="$3"
+    
+    fazer_backup "$PASTA_DESTINO/$ARQUIVO"
+    
+    curl -sLo "$PASTA_DESTINO/$ARQUIVO" "$URL"
+    echo -e "${verde}Configuração $ARQUIVO aplicada${reset}"
+}
 
----
+echo -e "${verde}Iniciando configurações do Termux...${reset}"
 
-### Uso
+# Chamar a função para remover os arquivos
+remove_files
 
-1. **Clonar o Repositório**: Comece clonando o seu repositório do GitHub para o seu dispositivo Termux.
+# URL para bash.bashrc (URL original)
+URL_BASH_BASHRC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/bash.bashrc"
+# URL para termux.properties
+URL_TERMUX_PROPERTIES="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/termux-configs/termux.properties"
+# URL para .nanorc
+URL_NANORC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/.nanorc"
+# URL para .bashrc (URL principal do repositório)
+URL_BASHRC="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/.bashrc"
 
-    ```bash
-    git clone https://github.com/SnowPerfectDev/Termux-Config-Setup.git
-    ```
+# Baixa e aplica a configuração do arquivo bash.bashrc
+baixar_e_aplicar "$URL_BASH_BASHRC" "bash.bashrc" "/data/data/com.termux/files/usr/etc"
+# Baixa e aplica a configuração do arquivo termux.properties
+mkdir -p "$HOME/.termux"
+baixar_e_aplicar "$URL_TERMUX_PROPERTIES" "termux.properties" "$HOME/.termux"
+# Baixa e aplica a configuração do arquivo .nanorc
+baixar_e_aplicar "$URL_NANORC" ".nanorc" "$HOME"
+# Baixa e aplica o arquivo .bashrc
+baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
 
-2. **Executar o Script**: Navegue até o diretório onde o script `termux-config-update` está localizado e execute-o.
+# Copia o script para a pasta /data/data/com.termux/files/usr/bin/
+cp "$0" "/data/data/com.termux/files/usr/bin/update-termux-config"
+chmod +x "/data/data/com.termux/files/usr/bin/update-termux-config"
 
-    ```bash
-    cd Termux-Config-Setup
-    chmod +x Termux-Config-Setup.sh
-    ./Termux-Config-Setup.sh
-    ```
-
-3. **Atualizar Suas Configurações**: O script irá automaticamente baixar os arquivos de configuração mais recentes, como `.bashrc`, `.nanorc`, `bash.bashrc` e `termux.properties`, do seu repositório no GitHub.
-
-4. **Arquivo .bashrc Personalizado**: Se você quiser adicionar ou modificar seus próprios aliases e configurações no arquivo `.bashrc`, basta fazer as alterações diretamente no arquivo `.bashrc` no diretório do seu repositório. O script irá baixar e aplicar essa versão personalizada.
-
-5. **Atualização Automática**: O script também permite criar um atalho para atualização de configurações. Ao executar o comando `update-termux-config`, o script irá baixar as configurações mais recentes e aplicá-las automaticamente ao seu Termux.
-
----
-
-### Observação
-
-- Certifique-se de ajustar as URLs dos arquivos de configuração no script conforme necessário para refletir o seu repositório do GitHub.
-- Após atualizar as configurações, saia e inicie uma nova sessão do Termux para ver as alterações aplicadas.
+echo -e "${verde}Configurações concluídas!${reset}"
