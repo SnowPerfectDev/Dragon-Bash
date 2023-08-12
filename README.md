@@ -1,4 +1,3 @@
----
 ### Termux Config Setup
 
 O **Termux Config Setup** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do seu repositório no GitHub e aplicá-las automaticamente ao ambiente Termux.
@@ -11,6 +10,20 @@ Este script foi desenvolvido para uso pessoal e customização das configuraçõ
 
 ---
 
+### Dependências
+
+Para garantir que o script funcione corretamente, certifique-se de ter as seguintes dependências instaladas:
+
+- **curl**: Uma ferramenta de linha de comando para transferir dados com URLs. O script usa o `curl` para fazer o download dos arquivos de configuração.
+
+- **git**: Um sistema de controle de versão distribuído. O script pode precisar do `git` para clonar o repositório do GitHub que contém as configurações.
+
+- **ruby (opcional)**: O `lolcat` é uma ferramenta que colore a saída do terminal. Se desejar usar o `lolcat` para adicionar cores ao output do script, você precisará do Ruby instalado para instalar o `lolcat`.
+
+- **tput**: Uma ferramenta que oferece controle da tela terminal para manipular cores, cursor, entre outros. O script pode usar o `tput` para melhorar a formatação do output.
+
+---
+
 ### Uso
 
 1. **Clonar o Repositório**: Comece clonando o seu repositório do GitHub para o seu dispositivo Termux.
@@ -19,10 +32,11 @@ Este script foi desenvolvido para uso pessoal e customização das configuraçõ
     git clone https://github.com/SnowPerfectDev/Termux-Config-Setup.git
     ```
 
-2. **Executar o Script**: Navegue até o diretório onde o script `termux-config-update` está localizado e execute-o.
+2. **Executar o Script**: Navegue até o diretório onde o script `Termux-Config-Setup.sh` está localizado e execute-o.
 
     ```bash
     cd Termux-Config-Setup
+    chmod +x Termux-Config-Setup.sh
     ./Termux-Config-Setup.sh
     ```
 
