@@ -23,7 +23,7 @@ Este script foi desenvolvido para uso pessoal e customização das configuraçõ
 
     ```bash
     cd Termux-Config-Setup
-    ./termux-config-update
+    ./Termux-Config-Setup.sh
     ```
 
 3. **Atualizar Suas Configurações**: O script irá automaticamente baixar os arquivos de configuração mais recentes, como `.bashrc`, `.nanorc`, `bash.bashrc` e `termux.properties`, do seu repositório no GitHub.
