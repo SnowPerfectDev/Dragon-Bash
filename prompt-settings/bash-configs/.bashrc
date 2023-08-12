@@ -1,4 +1,4 @@
-Alias para listar arquivos
+# Alias para listar arquivos
 alias ls='ls -h --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lha --color=auto'
