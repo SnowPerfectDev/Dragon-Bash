@@ -1,11 +1,24 @@
 # Colors
-red='\e[1;31m'
-green='\e[1;32m'
-blue='\e[1;34m'
-purple='\e[1;35m'
-icyan='\e[1;36m'
-white='\e[1;37m'
-yellow='\e[1;33m'
+if [ -n "$(command -v tput)" ] && [ $(tput colors) -ge 8 ]; then
+    rst="$(tput sgr0)"
+    red="${rst}$(tput setaf 1)"
+    bred="${rst}$(tput bold)$(tput setaf 1)"
+    green="${rst}$(tput setaf 2)"
+    yellow="${rst}$(tput setaf 3)"
+    byellow="${rst}$(tput bold)$(tput setaf 3)"
+    blue="${rst}$(tput setaf 4)"
+    cyan="${rst}$(tput setaf 6)"
+    bcyan="${rst}$(tput bold)$(tput setaf 6)"
+    icyan="${rst}$(tput sitm)$(tput setaf 6)"
+else
+    red='\e[1;31m'
+    green='\e[1;32m'
+    blue='\e[1;34m'
+    purple='\e[1;35m'
+    icyan='\e[1;36m'
+    white='\e[1;37m'
+    yellow='\e[1;33m'
+fi
 
 # Função para imprimir espaço com margens
 space() {
