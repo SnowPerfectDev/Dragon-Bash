@@ -90,4 +90,5 @@ baixar_e_aplicar "$URL_COLORS_PROPERTIES" "colors.properties" "$HOME/.termux"
 mkdir -p "$HOME/.termux"
 curl -sLo "$HOME/.termux/font.ttf" "$URL_FONT"
 echo -e "[${verde}+${reset}] Arquivo font.ttf baixado para $HOME/.termux/font.ttf"
-#
+# Baixa e aplica a configuração do arquivo .bashrc
+baixar_e_aplicar "$URL_BASHRC" ".bashrc" "$HOME"
