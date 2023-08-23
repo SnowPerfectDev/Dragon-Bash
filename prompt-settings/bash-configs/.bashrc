@@ -400,7 +400,7 @@ function clone() {
         return 1
     fi
 
-    default_destination="$HOME/git_clones"  # Default directory for clones
+    default_destination="$HOME/clones"  # Default directory for clones
 
     if [ $# -eq 1 ]; then
         destination="$default_destination"
