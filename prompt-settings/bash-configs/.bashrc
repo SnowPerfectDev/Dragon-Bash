@@ -372,6 +372,7 @@ function json-src() {
     [ -n "$1" ] && local SRC="$1"
     find ${SRC} -iname "*.json"
 }
+
 extract() {
   if [ -f "$1" ]; then
     case "$1" in
@@ -386,9 +387,34 @@ extract() {
       *.zip)       unzip "$1"     ;;
       *.Z)         uncompress "$1" ;;
       *.7z)        7z x "$1"      ;;
-      *)           echo "'$1' não pode ser extraído usando a função 'extract'" ;;
+      *)           echo "'$1' cannot be extracted using the 'extract' function" ;;
     esac
   else
-    echo "'$1' não é um arquivo válido"
+    echo "'$1' is not a valid file"
   fi
+}
+
+function clone() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: clone <repository_url> [destination_directory]"
+        return 1
+    fi
+
+    default_destination="$HOME/git_clones"  # Default directory for clones
+
+    if [ $# -eq 1 ]; then
+        destination="$default_destination"
+    else
+        destination="$default_destination/$2"
+    fi
+
+    mkdir -p "$destination"  # Create the destination directory if it doesn't exist
+
+    git clone -q "$1" "$destination"
+    if [ $? -ne 0 ]; then
+        echo "Error: Cloning failed."
+        return 1
+    fi
+
+    echo "Cloning successful."
 }
