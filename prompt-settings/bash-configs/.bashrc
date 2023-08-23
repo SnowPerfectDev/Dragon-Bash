@@ -396,19 +396,19 @@ extract() {
 
 function clone() {
     if [ $# -lt 1 ]; then
-        echo "Usage: clone <repository_url> [destination_directory]"
+        echo "Usage: clone <repository_url>"
         return 1
     fi
 
-    default_destination="$HOME/clones"  # Default directory for clones
+    default_destination="$HOME/clones"
+    counter=1
 
-    if [ $# -eq 1 ]; then
-        destination="$default_destination"
-    else
-        destination="$default_destination/$2"
-    fi
+    # Find the next available number for the directory
+    while [ -d "$default_destination/clone-$counter" ]; do
+        counter=$((counter + 1))
+    done
 
-    mkdir -p "$destination"  # Create the destination directory if it doesn't exist
+    destination="$default_destination/clone-$counter"
 
     git clone -q "$1" "$destination"
     if [ $? -ne 0 ]; then
@@ -416,5 +416,5 @@ function clone() {
         return 1
     fi
 
-    echo "Cloning successful."
+    echo "Cloning successful. Repository cloned to '$destination'"
 }
