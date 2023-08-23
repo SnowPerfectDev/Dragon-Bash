@@ -8,7 +8,7 @@ reset="\033[0m"
 # Função para exibir mensagens de sucesso em verde
 exibir_sucesso() {
     mensagem="$1"
-    echo -e "[${verde}+${reset}] ${mensagem}"
+    echo -e "${reset}[${verde}+${reset}] ${mensagem}"
 }
 
 # Função para exibir mensagens de erro em vermelho
