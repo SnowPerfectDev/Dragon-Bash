@@ -49,6 +49,4 @@ Para garantir que o script funcione corretamente, certifique-se de ter as seguin
 ---
 
 ### Observação
-
-- Certifique-se de ajustar as URLs dos arquivos de configuração no script conforme necessário para refletir o seu repositório do GitHub.
 - Após atualizar as configurações, saia e inicie uma nova sessão do Termux para ver as alterações aplicadas.
