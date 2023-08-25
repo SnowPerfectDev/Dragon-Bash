@@ -22,6 +22,8 @@ Para garantir que o script funcione corretamente, certifique-se de ter as seguin
 
 - **tput**: Uma ferramenta que oferece controle da tela terminal para manipular cores, cursor, entre outros. O script pode usar o `tput` para melhorar a formatação do output.
 
+- **wget**: É uma ferramenta de linha de comando para transferir dados por URLs. É comumente usado para baixar arquivos da web, oferecendo opções para controlar a saída do arquivo, taxa de transferência, entre outras. É útil para automação e tarefas de administração.
+
 ---
 
 ### Uso
