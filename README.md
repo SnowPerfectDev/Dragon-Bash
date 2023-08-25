@@ -29,15 +29,13 @@ Para garantir que o script funcione corretamente, certifique-se de ter as seguin
 1. **Clonar o Repositório**: Comece clonando o seu repositório do GitHub para o seu dispositivo Termux.
 
     ```bash
-    git clone https://github.com/SnowPerfectDev/Termux-Config-Setup.git
+    wget -O setup.sh https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/Termux-Config-Setup.sh
     ```
 
 2. **Executar o Script**: Navegue até o diretório onde o script `Termux-Config-Setup.sh` está localizado e execute-o.
 
     ```bash
-    cd Termux-Config-Setup
-    chmod +x Termux-Config-Setup.sh
-    ./Termux-Config-Setup.sh
+    chmod +x stup.sh && ./setup.sh
     ```
 
 3. **Atualizar Suas Configurações**: O script irá automaticamente baixar os arquivos de configuração mais recentes, como `.bashrc`, `.nanorc`, `bash.bashrc` e `termux.properties`, do seu repositório no GitHub.
