@@ -28,7 +28,7 @@ Para garantir que o script funcione corretamente, certifique-se de ter as seguin
 
 ### Uso
 
-1. **Clonar o Repositório**: Comece clonando o seu repositório do GitHub para o seu dispositivo Termux.
+1. **Baixar o Arquivo Executável**: Comece fazendo o download do arquivo executável .sh diretamente do repositório GitHub para o seu Termux, utilizando o comando wget.
 
     ```bash
     wget -O setup.sh https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/Termux-Config-Setup.sh
