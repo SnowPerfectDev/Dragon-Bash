@@ -31,7 +31,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Termux-Co
 
 ---
 
-## Uso
+### Uso
 
 1. **Executar o Script de Configuração**: Para começar, execute o seguinte comando no seu Termux para baixar e executar o script de configuração:
 
