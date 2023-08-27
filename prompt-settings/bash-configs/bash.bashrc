@@ -20,6 +20,19 @@ else
     yellow='\e[1;33m'
 fi
 
+# Função para centralizar mensagem de forma automática sem usar tput
+center_message() {
+   message="$1"
+   termwidth=$(stty size | cut -d" " -f2)
+   padding=""
+
+   for ((i = 0; i < (termwidth - ${#message}) / 2; i++)); do
+       padding+=" "
+   done
+
+   echo -e "$padding$message$padding"
+}
+
 # Função para imprimir espaço com margens
 space() {
     printf '%*.*s %s %*.*s\n' "$1"
@@ -64,7 +77,7 @@ print_logo
 print_header() {
 echo -e "            ${green}⧏${red}=================${yellow}======${byellow}============${red}=================${green}⧐"
 space 67
-echo -e ${red}"------------------------------${blue}{${bred}Obscure Society${blue}}${red}------------------------------"
+center_message "${red}------------------------------${blue}{${bred}Obscure Society${blue}}${red}------------------------------"
 space 67
 echo -e "            ${green}⧏${red}=================${yellow}======${yellow}============${red}=================${green}⧐"
 }
@@ -73,8 +86,3 @@ print_header
 space 78
 PS1='\[\033[01;31m\]┌─\[\033[01;34m\][\[\e[1;34m\]\[\033[01;32m\]OS\033[01;34m\]x\033[01;32m\]OBS\e[0m\]\[\033[01;34m\]]\[\033[01;31m\]-\e[0m\]\[\033[01;34m\][\[\e[01;33m\]\t\e[0m\]\[\033[01;34m\]]\[\033[01;31m\]
 ┃\n\[\033[01;31m\]└─\[\033[01;34m\][\[\033[01;32m\]${PWD/*\//}\[\033[01;34m\]]\[\033[01;31m\]-\[\033[01;34m\]}\[\033[01;36m\] '
-
-
-complete -W "update upgrade \
-        install uninstall \
-        search" pkg
