@@ -11,6 +11,12 @@ exibir_sucesso() {
     echo -e "${reset}[${verde}+${reset}] ${mensagem}"
 }
 
+# Função para exibir mensagens de alertas em vermelho
+exibir_alerta() {
+    mensagem="$1"
+    echo -e "[${vermelho}!${reset}] ${mensagem}"
+}
+
 # Função para exibir mensagens de erro em vermelho
 exibir_erro() {
     mensagem="$1"
@@ -19,7 +25,7 @@ exibir_erro() {
 
 # Função para remover arquivos dentro da pasta ../usr/etc/
 remove_files() {
-    exibir_sucesso "Removendo arquivos..."
+    exibir_alerta "Removendo arquivos..."
 
     cd ~/../usr/etc/ || {
         exibir_erro "Não foi possível acessar o diretório."
@@ -28,11 +34,11 @@ remove_files() {
 
     # Arquivos a serem removidos
     arquivos=("motd" "motd.sh" "motd-playstore")
-    
+
     for arquivo in "${arquivos[@]}"; do
         if [ -e "$arquivo" ]; then
             rm -f "$arquivo"
-            exibir_sucesso "Arquivo $arquivo removido."
+            exibir_alerta "Arquivo $arquivo removido."
         fi
     done
 
@@ -45,15 +51,21 @@ baixar_e_aplicar() {
     URL="$1"
     ARQUIVO="$2"
     PASTA_DESTINO="$3"
-    
+
     # Fazer backup se o arquivo existir
     if [ -e "$PASTA_DESTINO/$ARQUIVO" ]; then
         cp "$PASTA_DESTINO/$ARQUIVO" "$PASTA_DESTINO/$ARQUIVO.bkp"
         exibir_sucesso "Backup de $ARQUIVO criado como $ARQUIVO.bkp"
     fi
-    
-    curl -sLo "$PASTA_DESTINO/$ARQUIVO" "$URL"
-    exibir_sucesso "Configuração $ARQUIVO aplicada"
+
+    exibir_sucesso "Baixando $ARQUIVO..."
+    if curl -sLo "$PASTA_DESTINO/$ARQUIVO" "$URL"; then
+        exibir_sucesso "Configuração $ARQUIVO aplicada"
+        return 0
+    else
+        exibir_erro "Falha ao baixar $ARQUIVO"
+        return 1
+    fi
 }
 
 exibir_sucesso "Iniciando configurações do Termux..."
@@ -72,7 +84,12 @@ declare -A urls=(
 remove_files
 
 # Baixar e aplicar as configurações
+total_arquivos="${#urls[@]}"
+contador=0
+
 for arq in "${!urls[@]}"; do
+    contador=$((contador + 1))
+    
     if [ "$arq" = ".nanorc" ]; then
         destino="$HOME"  # Copiar o .nanorc para a pasta home
     elif [ "$arq" = ".bashrc" ]; then
@@ -82,7 +99,10 @@ for arq in "${!urls[@]}"; do
     else
         destino="$HOME/.termux"  # Demais arquivos vão para a pasta .termux
     fi
-    baixar_e_aplicar "${urls[$arq]}" "$arq" "$destino"
+
+    if baixar_e_aplicar "${urls[$arq]}" "$arq" "$destino"; then
+       exibir_alerta "Progresso: $contador de $total_arquivos arquivos"
+    fi
 done
 
 exibir_sucesso "Configurações concluídas."
