@@ -70,12 +70,6 @@ if ! is_package_installed_command "python"; then
     echo ""
 fi
 
-# Install the 'lolcat' gem if not installed
-if ! is_package_installed "lolcat"; then
-    echo -e "\e[33mInstalling the 'lolcat' gem...\e[0m"
-    yes | gem install lolcat
-    echo ""
-fi
 
 # Check and install tput if not installed
 if ! is_package_installed_command "tput"; then
@@ -88,6 +82,13 @@ fi
 if ! is_package_installed_command "ruby"; then
     echo -e "\e[33mInstalling Ruby...\e[0m"
     yes | pkg install ruby
+    echo ""
+fi
+
+# Install the 'lolcat' gem if not installed
+if ! is_package_installed "lolcat"; then
+    echo -e "\e[33mInstalling the 'lolcat' gem...\e[0m"
+    yes | gem install lolcat
     echo ""
 fi
 
