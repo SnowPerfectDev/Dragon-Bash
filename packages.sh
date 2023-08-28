@@ -63,14 +63,6 @@ if ! is_package_installed_command "wget"; then
     echo ""
 fi
 
-# Install Python pip if not installed
-if ! is_package_installed_command "python"; then
-    echo -e "\e[33mInstalling Python pip...\e[0m"
-    yes | pkg install python
-    echo ""
-fi
-
-
 # Check and install tput if not installed
 if ! is_package_installed_command "tput"; then
     echo -e "\e[33mInstalling tput...\e[0m"
@@ -119,7 +111,6 @@ check_and_display() {
 
 check_and_display "curl"
 check_and_display "wget"
-check_and_display "python"
 check_and_display "lolcat"
 check_and_display "tput"
 check_and_display "ruby"
