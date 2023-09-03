@@ -34,7 +34,7 @@ alias s='sudo'
 
 ###### Gerenciamento de Arquivos e Diretórios ######
 alias lists='nano /etc/apt/sources.list'
-alias tt='termux-reload-settings && source ../usr/etc/bash.bashrc'
+alias tt='clear;termux-reload-settings && source ../usr/etc/bash.bashrc'
 alias ports='netstat -tuln'
 alias mem='ps aux --sort -rss'
 alias update='sudo apt update && sudo apt upgrade'
