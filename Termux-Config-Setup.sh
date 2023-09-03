@@ -9,9 +9,7 @@ reset="\033[0m"
 exibir_sucesso() {
     mensagem="$1"
     echo -e "${reset}[${verde}+${reset}] ${mensagem}"
-
-# Recarregar as configurações do Termux após o sucesso
-    termux-reload-settings
+sleep 2
 }
 
 # Função para exibir mensagens de alertas em vermelho
