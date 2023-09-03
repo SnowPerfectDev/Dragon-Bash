@@ -106,5 +106,4 @@ for arq in "${!urls[@]}"; do
     fi
 done
 
-source ${HOME}/.bashrc
 exibir_sucesso "Configurações concluídas."
