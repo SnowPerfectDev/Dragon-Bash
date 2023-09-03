@@ -148,8 +148,7 @@
      local ALIASLIST=$(alias | sort | awk -F "=" '{print $1}' | awk '{print $2}') 
      local GITLIST=$(git config -l | grep alias | cut -c 7- | sort | awk -F "=" '{print $1}') 
      cat <<EOF 
-  
- # Functions 
+  } 
   
  Para listar detalhes da função: declare -f <function> 
   
