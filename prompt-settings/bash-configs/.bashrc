@@ -141,40 +141,7 @@
  alias uol='ping -t 3 www.uol.com.br' # Ping ao UOL a cada 3 segundos 
   
  ################################################################################ 
- # Funções de Auxiliar Interno 
-  
- function _howto_helper() { 
-     local FUNCLIST=$(declare -F | grep -v -e 'declare -f _' -e 'command_not_found_handle' -e 'in_array' -e 'quote' | awk '{print $3}') 
-     local ALIASLIST=$(alias | sort | awk -F "=" '{print $1}' | awk '{print $2}') 
-     local GITLIST=$(git config -l | grep alias | cut -c 7- | sort | awk -F "=" '{print $1}') 
-     cat <<EOF 
-  } 
-  
- Para listar detalhes da função: declare -f <function> 
-  
- $(printf "  %-18s %-18s %-18s %-18s\n" ${FUNCLIST}) 
-  
- # Aliases 
-  
- Para listar detalhes do alias: alias <alias-name> 
-  
- $(printf "  %-18s %-18s %-18s %-18s\n" ${ALIASLIST}) 
-  
- # Git Aliases 
-  
- To list git alias details: git config --get-regexp alias.<name> 
-  
- $(printf "  %-18s %-18s %-18s %-18s\n" ${GITLIST}) 
-  
- # Mais sobre o comando 
-  
-   man <command> 
-   help <built-in> 
-   type [-a|-t] <command> 
-   command [-V] <command> 
-  
- EOF 
- } 
+ 
   
  # # Inicia $GUI_EDITOR se estiver em X e $EDITOR se não estiver 
  function _edit() { 
