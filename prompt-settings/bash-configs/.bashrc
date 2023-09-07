@@ -396,11 +396,4 @@ command_not_found_handle() {
 
    printf "${blue}Comando não encontrado:${red} $1${reset}\n"  # Exibe a mensagem formatada
    return 127
-}() {
-   local blue='\033[0;34m'  # Define a cor azul
-   local red='\033[0;31m'   # Define a cor vermelha
-   local reset='\033[0m'    # Reseta as cores
-
-   printf "${blue}Comando não encontrado:${red} $1${reset}\n"  # Exibe a mensagem formatada
-   return 127
 }
