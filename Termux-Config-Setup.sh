@@ -16,6 +16,7 @@ sleep 2
 exibir_alerta() {
     mensagem="$1"
     echo -e "[${vermelho}!${reset}] ${mensagem}"
+    echo
 }
 
 # Função para exibir mensagens de erro em vermelho
