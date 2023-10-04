@@ -85,12 +85,12 @@ exibir_sucesso "Iniciando configurações do Termux..."
 
 # URLs centralizadas
 declare -A urls=(
-    ["bash.bashrc"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/bash.bashrc"
-    ["termux.properties"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/termux-configs/termux.properties"
-    [".nanorc"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/.nanorc"
-    ["colors.properties"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/color-schemes/colors.properties"
-    ["font.ttf"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/shell-config/config-files/font.ttf"
-    [".bashrc"]="https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/prompt-settings/bash-configs/.bashrc"
+    ["bash.bashrc"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/prompt-settings/bash-configs/bash.bashrc"
+    ["termux.properties"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/prompt-settings/termux-configs/termux.properties"
+    [".nanorc"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/shell-config/config-files/.nanorc"
+    ["colors.properties"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/prompt-settings/color-schemes/colors.properties"
+    ["font.ttf"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/shell-config/config-files/font.ttf"
+    [".bashrc"]="https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/prompt-settings/bash-configs/.bashrc"
 )
 
 # Chamar a função para remover os arquivos
