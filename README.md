@@ -1,6 +1,4 @@
-### Termux Config Setup
-
-O **Termux Config Setup** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do repositório @SnowPerfectDev e aplicá-las automaticamente ao ambiente Termux.
+O **Dragon Bash** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do repositório @SnowPerfectDev e aplicá-las automaticamente ao ambiente Termux.
 
 ---
 
