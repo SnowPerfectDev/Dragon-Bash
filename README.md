@@ -25,7 +25,7 @@ Para garantir que o script funcione corretamente, certifique-se de ter as seguin
 
 ### Comando
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/packages.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/packages.sh)"
 ```
 
 ---
@@ -35,7 +35,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Termux-Co
 1. **Executar o Script de Configuração**: Para começar, execute o seguinte comando no seu Termux para baixar e executar o script de configuração:
 
     ```bash
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Termux-Config-Setup/main/Termux-Config-Setup.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/Termux-Config-Setup.sh)"
     
     ```
 
