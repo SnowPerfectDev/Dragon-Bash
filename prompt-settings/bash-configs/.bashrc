@@ -396,5 +396,4 @@ command_not_found_handle() {
    local reset='\033[0m'    # Reseta as cores
 
    printf "${blue}Comando não encontrado:${red} $1${reset}\n"  # Exibe a mensagem formatada
-   return 127
-}
+   return 127; }
