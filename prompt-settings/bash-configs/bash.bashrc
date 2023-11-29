@@ -75,7 +75,7 @@
  print_logo 
  # Função para exibir o cabeçalho 
  print_header() { 
- echo -e "            ${green}⧏${red}=================${yellow}======${byellow}============${red}=================${green}⧐" 
+ echo -e "            ${green}⧏${red}=================${yellow}==================${red}=================${green}⧐" 
  space 67 
  center_message "${red}------------------------------${blue}{${bred}Obscure Society${blue}}${red}------------------------------" 
  space 67 
