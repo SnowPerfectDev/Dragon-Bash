@@ -132,7 +132,6 @@ alias uol='ping -t 3 www.uol.com.br' # Ping ao UOL a cada 3 segundos
 # example: his ssh 192 (search all ssh commands done to ips inclusing 192)
 # example: his sed jsx react (search all sed commands that include "jsx" and "react")
 function his() {
-
   # Store the full history in a variable
   # Command order: history, remove line numbers, remove leading and trailing whitespace, sort, remove duplicates
   # Note that we are using a naive way of removing the line numbers
