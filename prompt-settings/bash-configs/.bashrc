@@ -162,7 +162,7 @@ function @ip-locator {
 
 # Get domain IP address 
 # Requires dig command. To install: sudo apt install dnsutils 
-function @ip-resolver { 
+function @ip-resolver() { 
     local USAGE="usage: ip-resolver <domain-name> [<domain-name>..]" 
     [ "$1" == "-h" ] && (>&2 echo $USAGE) && return 
     [ $# -eq 0 ] && (>&2 echo $USAGE) && return 
