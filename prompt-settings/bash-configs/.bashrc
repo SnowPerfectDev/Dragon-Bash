@@ -16,7 +16,7 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 HISTCONTROL=ignoredups
  
-###### Comandos Básicos ######
+############# Comandos Básicos
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias l='ls -CF'
@@ -32,7 +32,7 @@ alias c='clear'
 alias e='exit'
 alias s='sudo'
 
-###### Gerenciamento de Arquivos e Diretórios ######
+############# Gerenciamento de Arquivos e Diretórios
 alias lists='nano /etc/apt/sources.list'
 alias tt='clear;termux-reload-settings && source ../usr/etc/bash.bashrc'
 alias ttsu='clear; tsu'
@@ -53,13 +53,13 @@ alias updatepkg='pkg update && pkg upgrade'
 alias rmrf='rm -rf'
 alias mkdir='mkdir -p'
 
-###### Navegação Rápida em Diretórios ######
+############# Navegação Rápida em Diretórios
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-###### Outros Utilitários ######
+############# Outros Utilitários
 alias n='nano'
 alias py='python'
 alias py3='python3'
@@ -71,7 +71,7 @@ alias meminfo='cat /proc/meminfo'
 alias diskinfo='df -h'
 alias lsa='ls -a'
 
-###### Ferramentas de Rede e Informações ######
+############# Ferramentas de Rede e Informações
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -'
 alias calc='bc -l'
 alias randpass='openssl rand -base64 12'
@@ -80,37 +80,37 @@ alias diskusage='ncdu'
 alias weather='curl wttr.in'
 alias movieinfo='mediainfo'
 
-###### Calendário e Timestamps ######
+############# Calendário e Timestamps
 alias cal='cal -3'
 alias timestamp='date +%s'
 
-###### Criptografia e Segurança ######
+############# Criptografia e Segurança
 alias encrypt='gpg -c'
 alias decrypt='gpg -d'
 alias cve='searchsploit'
 
-###### Informações de Rede ######
+############# Informações de Rede
 alias whatismyip='curl ifconfig.me'
 alias iptablesflush='iptables -F'
 
-###### Comandos de Sistema ######
+############# Comandos de Sistema
 alias rebootsys='sudo reboot'
 alias poweroffsys='sudo poweroff'
 alias encryptfile='openssl aes-256-cbc -a -salt -in'
 alias decryptfile='openssl aes-256-cbc -d -a -in'
 alias qr='qrcode-terminal'
 
-###### Cronômetros e Temporizadores ######
+############# Cronômetros e Temporizadores
 alias stopwatch='date && time read -sn 1 && echo && date'
 alias timer='read -p "Enter the time in seconds: " secs && echo "Timer started for $secs seconds." && sleep $secs && notify-send "Timer finished!"'
 
-###### Testes de Rede ######
+############# Testes de Rede
 alias speedtest-cli='speedtest-cli --simple'
 alias wifi='termux-wifi-connectioninfo'
 alias battery='termux-battery-status'
 alias shareterm='sshd'
 
-###### Git e Controle de Versão ######
+############# Git e Controle de Versão
 alias gitinit='git init'
 alias gita='git add .'
 alias gitc='git commit -m'
@@ -118,17 +118,36 @@ alias gitp='git push'
 alias gitlog='git log'
 alias gitconf='git config --global user.name "Your Name" && git config --global user.email "youremail@example.com"'
 
-###### Saída do Terminal para Termbin ######
+############# Saída do Terminal para Termbin
 alias tb="nc termbin.com 9999"
 
-###### Testes de Conexão com Ping ######
+############# Testes de Conexão com Ping
 alias google='ping -t 3 www.google.com.br' # Ping ao Google a cada 3 segundos
 alias uol='ping -t 3 www.uol.com.br' # Ping ao UOL a cada 3 segundos
 
+############# History search helper 
+# History search helper
+# usage: his query1 query2 queryn...
+# example: his ssh 192 (search all ssh commands done to ips inclusing 192)
+# example: his sed jsx react (search all sed commands that include "jsx" and "react")
+function his() {
+
+  # Store the full history in a variable
+  # Command order: history, remove line numbers, remove leading and trailing whitespace, sort, remove duplicates
+  # Note that we are using a naive way of removing the line numbers
+  commandlog=$(history | grep -oE "[a-zA-Z]{1}.*" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | sort | uniq)
+
+  # For every parameter provided to this function, run a case insensitive grep
+  for var in "$@";do
+    commandlog=$(echo "$commandlog" | grep -i "$var")
+  done
+
+  # Log out the results
+  echo "$commandlog"
+}
 
 
-
-################Functions list
+############# Functions list
 
 # Get country / location information of an IP address 
 function @ip-locator { 
@@ -186,7 +205,7 @@ function lcfile() {
     done 
 } 
 
-########## Substitui substring nos nomes dos arquivos 
+############# Substitui substring nos nomes dos arquivos 
 # uso: rsfile <search-str> <replace> <file> [<file>..] 
 function rsfile() { 
     local USAGE="usage: rsfile <search-str> <replace-str> <file> [<file>..]" 
@@ -229,7 +248,7 @@ function ascify() {
     done 
 } 
 
-######### Trim trailing whitespace 
+############# Trim trailing whitespace 
 # usage: trim-ws <file> [<file> ..] 
 function trim-ws() { 
     local USAGE="usage: trim-ws <file> [<file> ..]" 
@@ -251,7 +270,7 @@ function trim-tab() {
     done 
 }
 
-##########  Script copied from book: 97 Things Every Programmer Should Know 
+############# Script copied from book: 97 Things Every Programmer Should Know 
 # Cunningham’s signature analysis: http://www.c2.com/doc/SignatureSurvey/ 
 # usage: code-analysis <file> [<file> ..] 
 function code-analysis { 
@@ -262,7 +281,7 @@ function code-analysis {
     done 
 } 
 
-######## Generate a random password 
+############# Generate a random password 
 # usage: genpasswd [length] 
 function genpasswd() { 
     local PWDLEN=${1:-32} 
@@ -276,7 +295,7 @@ function genpin() {
     tr -dc 0-9 < /dev/urandom | head -c ${PINLEN} | xargs 
 } 
 
-######### Ceasar cipher / ROT-13 
+############# Ceasar cipher / ROT-13 
 # usage: rot13 [filename] 
 function rot13() { 
     if [  $# = 0 ]; then 
@@ -286,13 +305,13 @@ function rot13() {
     fi 
 } 
 
-##########  Show threads of a process 
+############# Show threads of a process 
 function atop() { 
     [ -z "$1" ] && (>&2 echo "usage: atop <process-name>") && return 
     top -H -p $(pgrep $1) 
 } 
 
-######## List of most used commands in history 
+############# List of most used commands in history 
 #### NB! If ignoredups and erasedups is used then the output may not be usefull 
 # usage: xtop [number] 
 function xtop() { 
@@ -310,7 +329,7 @@ function c-src() {
     find ${SRC} -regextype posix-extended -regex "^.*\.(cpp|hpp|c|h)$" | grep -ve "^\.\/debian" 
 } 
 
-###### Find all python src files in dir 
+############# Find all python src files in dir 
 # usage: py-src [dir] 
 function py-src() { 
     local USAGE="usage: py-src [dir]" 
@@ -340,7 +359,7 @@ function json-src() {
     find ${SRC} -iname "*.json" 
 } 
 
-############# Function  extract #######
+############# Function  extract
 extract() { 
    if [ -f "$1" ]; then 
      case "$1" in 
@@ -362,7 +381,7 @@ extract() {
    fi 
 } 
 
-############# function clone  ##########
+############# function clone
 function clone() { 
      if [ $# -lt 1 ]; then 
          echo "Usage: clone <repository_url>" 
