@@ -1,11 +1,12 @@
 # ********************************************* 
  # * local: ${HOME}/.bashrc * 
- # * * 
+ # * SnowPerfectDev
+ # * Última modificação: Sexta-feira, 15 de dezembro 08:41:17 - 2023
  #----------------------------------------------- 
  # Configurações Gerais 
  #-----------------------------------------------  
  
- ################# Aliases ############# 
+ ################# Aliases #################
  
  ###### Configurações de Terminal ######
 # Habilita checkwinsize
