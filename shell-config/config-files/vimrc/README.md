@@ -1,5 +1,5 @@
 ```markdown
-### Configuração Vim Personalizada
+# Configuração Vim Personalizada
 
 Este repositório contém minha configuração personalizada para o editor de texto Vim, incluindo plugins e ajustes específicos. A configuração visa melhorar a produtividade e proporcionar uma experiência de edição mais eficiente.
 
