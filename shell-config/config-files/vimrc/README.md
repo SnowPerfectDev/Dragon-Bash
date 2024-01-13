@@ -1,5 +1,4 @@
-```markdown
-# Configuração Vim Personalizada
+### Configuração Vim Personalizada
 
 Este repositório contém minha configuração personalizada para o editor de texto Vim, incluindo plugins e ajustes específicos. A configuração visa melhorar a produtividade e proporcionar uma experiência de edição mais eficiente.
 
@@ -20,7 +19,7 @@ Este repositório contém minha configuração personalizada para o editor de te
 
 3. Reinicie o Vim para aplicar as alterações.
 
-## Plugins
+### Plugins
 
 ### Produtividade
 - [Bash Support](https://github.com/vim-scripts/bash-support.vim)
@@ -38,7 +37,7 @@ Este repositório contém minha configuração personalizada para o editor de te
 - [ALE](https://github.com/dense-analysis/ale)
 - [Vim Shellcheck](https://github.com/itspriddle/vim-shellcheck)
 
-## Configurações Gerais
+### Configurações Gerais
 
 - Números de linhas visíveis
 - Configuração de tabs e espaços
@@ -47,7 +46,7 @@ Este repositório contém minha configuração personalizada para o editor de te
 - Codificação UTF-8
 - Configurações de identação e busca
 
-## Mapeamentos de Teclas
+### Mapeamentos de Teclas
 
 - `q`: Sair do Vim
 - `<C-s>`: Salvar o arquivo
@@ -58,5 +57,3 @@ Este repositório contém minha configuração personalizada para o editor de te
 - `<leader>e`: Abrir o explorador de arquivos
 
 Para mover entre divisões: `<C-h>`, `<C-j>`, `<C-k>`, `<C-l>`
-
-Sinta-se à vontade para ajustar e personalizar conforme suas preferências!
