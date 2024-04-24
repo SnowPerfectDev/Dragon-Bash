@@ -34,8 +34,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Ba
 1. **Run the Configuration Script**: To begin, execute the following command in your Termux to download and run the configuration script:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/Termux-Config-Setup.sh)"
-    
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/Termux-Config-Setup.sh)"  
 ```
 
 2. **Update Your Configurations**: The script will automatically download the latest configuration files, including `.bashrc`, `.nanorc`, `bash.bashrc`, and `termux.properties`.
