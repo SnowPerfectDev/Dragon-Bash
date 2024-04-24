@@ -1,3 +1,5 @@
+<img title="Dragon Bash" src="https://img.shields.io/badge/CODENAME%20-Dragon-Bash?colorA=grey&colorB=green&style=for-the-badge"> <img title="Dragon Bash" src="https://img.shields.io/badge/VERSION%20-2.0-SCRIPT?colorA=grey&colorB=green&style=for-the-badge"> 
+
 ### Dragon Bash
 O **Dragon Bash** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do repositório @SnowPerfectDev e aplicá-las automaticamente ao ambiente Termux.
 
