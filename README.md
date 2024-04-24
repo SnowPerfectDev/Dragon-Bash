@@ -1,46 +1,47 @@
 ### Dragon Bash
-O **Dragon Bash** é um script conveniente projetado para simplificar o processo de atualização e aplicação das suas configurações personalizadas no emulador de terminal Termux. Com este script, você pode baixar facilmente as configurações mais recentes do repositório @SnowPerfectDev e aplicá-las automaticamente ao ambiente Termux.
+**Dragon Bash** is a convenient script designed to simplify the process of updating and applying your custom settings in the Termux terminal emulator. With this script, you can easily download the latest settings from the @SnowPerfectDev repository and automatically apply them to the Termux environment.
 
 ---
 
-### Uso Pessoal
+### Personal Use
 
-Este script foi desenvolvido para uso pessoal e customização das configurações do Termux. Ele é fornecido como uma ferramenta de conveniência para simplificar o processo de atualização de configurações específicas. Sinta-se à vontade para adaptá-lo conforme suas necessidades.
+This script was developed for personal use and customization of Termux settings. It is provided as a convenience tool to streamline the process of updating specific configurations. Feel free to adapt it to your needs.
 
 ---
 
-### Dependências
+### Dependencies
 
-Para garantir que o script funcione corretamente, certifique-se de ter as seguintes dependências instaladas:
+To ensure the script functions correctly, make sure you have the following dependencies installed:
 
-- **curl**: Uma ferramenta de linha de comando para transferir dados com URLs. O script usa o `curl` para fazer o download dos arquivos de configuração.
+- **curl**: A command-line tool for transferring data with URLs. The script uses `curl` to download configuration files.
 
-- **git**: Um sistema de controle de versão distribuído. O script pode precisar do `git` para clonar o repositório do GitHub que contém as configurações.
+- **git**: A distributed version control system. The script may need `git` to clone the GitHub repository containing the configurations.
 
-- **ruby (opcional)**: O `lolcat` é uma ferramenta que colore a saída do terminal. Se desejar usar o `lolcat` para adicionar cores ao output do script, você precisará do Ruby instalado para instalar o `lolcat`.
+- **ruby (optional)**: `lolcat` is a tool that colors terminal output. If you wish to use `lolcat` to add colors to the script output, you'll need Ruby installed to install `lolcat`.
 
-- **tput**: Uma ferramenta que oferece controle da tela terminal para manipular cores, cursor, entre outros. O script pode usar o `tput` para melhorar a formatação do output.
+- **tput**: A tool that provides terminal screen control to manipulate colors, cursor, among others. The script may use `tput` to enhance output formatting.
 
-- **wget**: É uma ferramenta de linha de comando para transferir dados por URLs. É comumente usado para baixar arquivos da web, oferecendo opções para controlar a saída do arquivo, taxa de transferência, entre outras. É útil para automação e tarefas de administração.
+- **wget**: A command-line tool for transferring data via URLs. It's commonly used for downloading files from the web, offering options to control file output, transfer rate, among others. It's useful for automation and administrative tasks.
 
-### Comando
+### Command
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/packages.sh)"
 ```
 
 ---
 
-### Uso
+### Usage
 
-1. **Executar o Script de Configuração**: Para começar, execute o seguinte comando no seu Termux para baixar e executar o script de configuração:
+1. **Run the Configuration Script**: To begin, execute the following command in your Termux to download and run the configuration script:
 
-    ```bash
+```bash
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/Termux-Config-Setup.sh)"
     
-    ```
+```
 
-2. **Atualizar Suas Configurações**: O script irá automaticamente baixar os arquivos de configuração mais recentes, incluindo `.bashrc`, `.nanorc`, `bash.bashrc` e `termux.properties`
+2. **Update Your Configurations**: The script will automatically download the latest configuration files, including `.bashrc`, `.nanorc`, `bash.bashrc`, and `termux.properties`.
+
 ---
 
-### Observação
-- Após atualizar as configurações, saia e inicie uma nova sessão do Termux para ver as alterações aplicadas.
+### Note
+- After updating the configurations, exit and start a new Termux session to see the applied changes.
