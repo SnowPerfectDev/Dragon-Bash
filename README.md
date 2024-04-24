@@ -1,4 +1,3 @@
-### Dragon Bash
 **Dragon Bash** is a convenient script designed to simplify the process of updating and applying your custom settings in the Termux terminal emulator. With this script, you can easily download the latest settings from the @SnowPerfectDev repository and automatically apply them to the Termux environment.
 
 ---
