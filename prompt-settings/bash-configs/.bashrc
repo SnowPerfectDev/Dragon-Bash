@@ -416,3 +416,14 @@ command_not_found_handle() {
 
    printf "${blue}Comando não encontrado:${red} $1${reset}\n"  # Exibe a mensagem formatada
    return 127; }
+
+######### função que usa o builtin pra personalizar a execução do cd ou cs ..
+cd() {
+    if [ "$1" == ".." ]; then
+        builtin cd .. && ls
+    elif [ -n "$1" ]; then
+        builtin cd "$1" && ls
+    else
+        builtin cd && ls
+    fi
+}
