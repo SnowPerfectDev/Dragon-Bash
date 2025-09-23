@@ -41,5 +41,13 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Ba
 
 ---
 
+3. **Vim configs**
+   ```bash
+   bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/refs/heads/main/shell-config/install-theme/install.sh)"
+   ```
+### As I always set up Vim manually, I ended up forgetting to automate it in the script.
+
+---
+
 ### Note
 - After updating the configurations, exit and start a new Termux session to see the applied changes.
