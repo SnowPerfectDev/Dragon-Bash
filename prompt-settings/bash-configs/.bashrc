@@ -390,11 +390,36 @@ function clone() {
 
 ############# Tratamento de comando não encontrado
 command_not_found_handle() {
-    local blue='\033[0;34m'  # Define a cor azul
-    local red='\033[0;31m'   # Define a cor vermelha
-    local reset='\033[0m'    # Reseta as cores
+    local blue='\033[0;34m'
+    local red='\033[0;31m'
+    local yellow='\033[1;33m'
+    local green='\033[0;32m'
+    local reset='\033[0m'
 
-    printf "${blue}Comando não encontrado:${red} $1${reset}\n"
+    local cmd="$1"
+    
+    printf "${blue}Comando não encontrado:${red} $cmd${reset}\n"
+    
+    # Cache local de pacotes comuns do Termux
+    case "$cmd" in
+        adb|fastboot)
+            printf "${green}Pacote disponível:${reset}\n"
+            printf "  • pkg install android-tools\n"
+            ;;
+        git|curl|wget|python|node|npm|php|java|gcc|g++)
+            printf "${green}Pacote disponível:${reset}\n"
+            printf "  • pkg install $cmd\n"
+            ;;
+        docker|kubectl|terraform)
+            printf "${yellow}Pacote não disponível no Termux${reset}\n"
+            printf "  • Use proot-distro para Linux completo\n"
+            ;;
+        *)
+            printf "${yellow}Verifique pacotes disponíveis:${reset}\n"
+            printf "  • pkg search $cmd\n"
+            ;;
+    esac
+    
     return 127
 }
 
