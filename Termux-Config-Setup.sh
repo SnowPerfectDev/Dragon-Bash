@@ -20,7 +20,7 @@ NORM() {
 exibir_sucesso() {
     mensagem="$1"
     echo -e "${reset}[${verde}+${reset}] ${mensagem}"
-sleep 2
+sleep 1
 }
 
 # Função para exibir mensagens de alertas em vermelho
