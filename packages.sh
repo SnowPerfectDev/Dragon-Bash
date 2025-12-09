@@ -1,4 +1,33 @@
+
 #!/bin/bash
+
+# Get terminal width
+tsize=$(stty size | cut -d ' ' -f 2)
+
+# Function to print line with centered title
+print_line() {
+    local title="$1"       # optional title
+    local char="${2:-=}"   # separator character (default '=')
+    local color="${3:-}"   # optional ANSI color code
+
+    if [[ -z "$title" ]]; then
+        # full line only
+        echo -ne "$color"
+        printf '%*s\n' "$tsize" '' | tr ' ' "$char"
+        [[ -n "$color" ]] && echo -ne "\e[0m"
+    else
+        # calculate space on sides
+        local tlen=${#title}
+        local pad=$(( (tsize - tlen - 2) / 2 ))  # -2 for spaces around title
+
+        # print characters + space + title + space + characters
+        echo -ne "$color"
+        printf '%*s' "$pad" '' | tr ' ' "$char"
+        printf ' %s ' "$title"
+        printf '%*s\n' "$pad" '' | tr ' ' "$char"
+        [[ -n "$color" ]] && echo -ne "\e[0m"
+    fi
+}
 
 # Function to centrally align a message 
 center_message() {
@@ -34,9 +63,9 @@ is_package_installed() {
 
 # Custom header
 clear
-echo -e "\e[36m------------------------------------------------------\e[0m"
-center_message "\e[36mDependency Installation Script\e[0m"
-echo -e "\e[36m------------------------------------------------------\e[0m"
+print_line "" "-" "\e[36m"
+center_message "Dependency Installation Script"
+print_line "" "-" "\e[36m"
 echo ""
 
 # Update repositories and packages
@@ -97,8 +126,7 @@ echo -e "\e[32mDependency installation completed!\e[0m"
 echo ""
 
 # Final summary
-echo -e "\e[34mInstallation Summary:\e[0m"
-echo -e "----------------------"
+print_line "Installation Summary" "-" "\e[34m"
 
 # Function to check and display the installation status of each dependency
 check_and_display() {
@@ -116,4 +144,4 @@ check_and_display "tput"
 check_and_display "ruby"
 check_and_display "git"
 
-echo -e "----------------------"
+print_line "" "-" "\e[34m"
