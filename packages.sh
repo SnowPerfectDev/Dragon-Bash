@@ -1,5 +1,4 @@
-
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
 # Get terminal width
 tsize=$(stty size | cut -d ' ' -f 2)
@@ -54,7 +53,7 @@ is_package_installed_command() {
 # Function to check if a package is installed
 is_package_installed() {
    package_name="$1"
-   if [ "$(dpkg -l | grep -w "ii  $package_name")" ]; then
+   if pkg list-installed 2>/dev/null | grep -q "^$package_name/"; then
        return 0 # Package is installed
    else
        return 1 # Package is not installed
@@ -70,53 +69,53 @@ echo ""
 
 # Update repositories and packages
 echo -e "\e[33mUpdating repositories and packages...\e[0m"
-yes | pkg update
+pkg update -y
 echo ""
 
 # Perform upgrade
 echo -e "\e[33mPerforming package upgrade...\e[0m"
-yes | pkg upgrade
+pkg upgrade -y
 echo ""
 
 # Check and install curl if not installed
 if ! is_package_installed_command "curl"; then
     echo -e "\e[33mInstalling curl...\e[0m"
-    yes | pkg install curl
+    pkg install -y curl
     echo ""
 fi
 
 # Check and install wget if not installed
 if ! is_package_installed_command "wget"; then
     echo -e "\e[33mInstalling wget...\e[0m"
-    yes | pkg install wget
+    pkg install -y wget
     echo ""
 fi
 
 # Check and install tput if not installed
 if ! is_package_installed_command "tput"; then
-    echo -e "\e[33mInstalling tput...\e[0m"
-    yes | pkg install ncurses-utils
+    echo -e "\e[33mInstalling ncurses-utils...\e[0m"
+    pkg install -y ncurses-utils
     echo ""
 fi
 
 # Install Ruby if not installed
 if ! is_package_installed_command "ruby"; then
     echo -e "\e[33mInstalling Ruby...\e[0m"
-    yes | pkg install ruby
+    pkg install -y ruby
     echo ""
 fi
 
 # Install the 'lolcat' gem if not installed
-if ! is_package_installed "lolcat"; then
+if ! command -v lolcat &>/dev/null; then
     echo -e "\e[33mInstalling the 'lolcat' gem...\e[0m"
-    yes | gem install lolcat
+    gem install lolcat
     echo ""
 fi
 
 # Install Git if not installed
 if ! is_package_installed_command "git"; then
     echo -e "\e[33mInstalling Git...\e[0m"
-    yes | pkg install git
+    pkg install -y git
     echo ""
 fi
 
