@@ -54,7 +54,7 @@ is_package_installed_command() {
 # Function to check if a package is installed
 is_package_installed() {
    package_name="$1"
-   if [ "$(dapt -l | grep -w "ii  $package_name")" ]; then
+   if [ "$(apt -l | grep -w "ii  $package_name")" ]; then
        return 0 # Package is installed
    else
        return 1 # Package is not installed
