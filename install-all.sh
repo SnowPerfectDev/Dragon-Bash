@@ -1,9 +1,6 @@
 
 #!/bin/bash
 
-# Adquire wakelock para evitar que a tela apague durante a instalação
-termux-wake-lock
-
 # Pega a largura do terminal
 tsize=$(stty size | cut -d ' ' -f 2)
 
@@ -32,36 +29,20 @@ print_line() {
     fi
 }
 
-sleep 9; clear 
-print_line "Script de Instalação de Dependências" "-" "\e[36m"
-echo ""
-
-sleep 9; clear 
-print_line "Atualizando repositórios e pacotes..." "-" "\e[33m"
-echo ""
-pkg update -y && pkg upgrade -y
-
-sleep 9; clear 
-print_line "Instalando dependências básicas..." "-" "\e[33m"
-echo ""
-pkg install -y curl wget git
-
-sleep 9; clear 
-print_line "Instalando pacotes adicionais..." "-" "\e[33m"
+print_line "Instalando dependencias..." "-" "\e[33m"
 echo ""
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/packages.sh)"
-
-sleep 9; clear 
-print_line "Configurando Termux..." "-" "\e[33m"
+sleep 4 && clear
+print_line "Configurando Termux (Dragon Bash" "-" "\e[33m"
 echo ""
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/main/Termux-Config-Setup.sh)"
 
-sleep 9; clear 
+sleep 3; clear 
 print_line "Baixando configurações do editor vim..." "-" "\e[33m"
 echo ""
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/SnowPerfectDev/Dragon-Bash/refs/heads/main/shell-config/install-theme/install.sh)"
 
-sleep 9; clear 
+# sleep 9; clear 
 print_line "Recarregando configurações do Termux..." "-" "\e[36m"
 echo ""
 termux-reload-settings
@@ -69,6 +50,3 @@ termux-reload-settings
 echo ""
 print_line "Instalação concluída!" "-" "\e[32m"
 echo ""
-
-# Libera wakelock após a instalação
-termux-wake-unlock
