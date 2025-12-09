@@ -116,6 +116,6 @@ for arq in "${!urls[@]}"; do
        exibir_alerta "Progresso: $contador de $total_arquivos arquivos"
     fi
 done
-
+termux-reload-settings 
 exibir_sucesso "Configurações concluídas."
 NORM
