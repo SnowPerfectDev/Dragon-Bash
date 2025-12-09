@@ -6,6 +6,7 @@
 
 # Pacotes PKG (formato: "comando:pacote" ou apenas "comando")
 PKG_PACKAGES=(
+    "vim"
     "curl"
     "wget"
     "tput:ncurses-utils"
