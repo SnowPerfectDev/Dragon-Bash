@@ -1,25 +1,42 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/usr/env/bin bash
+
+# ============================================================================
+# CONFIGURAÇÃO DE PACOTES - Adicione ou remova pacotes aqui
+# ============================================================================
+
+# Pacotes PKG (formato: "comando:pacote" ou apenas "comando")
+PKG_PACKAGES=(
+    "curl"
+    "wget"
+    "tput:ncurses-utils"
+    "ruby"
+    "git"
+)
+
+# Ruby Gems
+GEM_PACKAGES=(
+    "lolcat"
+)
+
+# ============================================================================
 
 # Get terminal width
 tsize=$(stty size | cut -d ' ' -f 2)
 
 # Function to print line with centered title
 print_line() {
-    local title="$1"       # optional title
-    local char="${2:-=}"   # separator character (default '=')
-    local color="${3:-}"   # optional ANSI color code
+    local title="$1"
+    local char="${2:-=}"
+    local color="${3:-}"
 
     if [[ -z "$title" ]]; then
-        # full line only
         echo -ne "$color"
         printf '%*s\n' "$tsize" '' | tr ' ' "$char"
         [[ -n "$color" ]] && echo -ne "\e[0m"
     else
-        # calculate space on sides
         local tlen=${#title}
-        local pad=$(( (tsize - tlen - 2) / 2 ))  # -2 for spaces around title
+        local pad=$(( (tsize - tlen - 2) / 2 ))
 
-        # print characters + space + title + space + characters
         echo -ne "$color"
         printf '%*s' "$pad" '' | tr ' ' "$char"
         printf ' %s ' "$title"
@@ -41,25 +58,6 @@ center_message() {
    echo -e "\e[34m$padding$message$padding\e[0m"
 }
 
-# Function to check if a package is installed using command -v
-is_package_installed_command() {
-   if command -v "$1" &>/dev/null; then
-       return 0 # Package is installed
-   else
-       return 1 # Package is not installed
-   fi
-}
-
-# Function to check if a package is installed
-is_package_installed() {
-   package_name="$1"
-   if pkg list-installed 2>/dev/null | grep -q "^$package_name/"; then
-       return 0 # Package is installed
-   else
-       return 1 # Package is not installed
-   fi
-}
-
 # Custom header
 clear
 print_line "" "-" "\e[36m"
@@ -77,47 +75,26 @@ echo -e "\e[33mPerforming package upgrade...\e[0m"
 pkg upgrade -y
 echo ""
 
-# Check and install curl if not installed
-if ! is_package_installed_command "curl"; then
-    echo -e "\e[33mInstalling curl...\e[0m"
-    pkg install -y curl
-    echo ""
-fi
+# Install PKG packages
+for pkg_entry in "${PKG_PACKAGES[@]}"; do
+    IFS=':' read -r cmd pkg_name <<< "$pkg_entry"
+    pkg_name="${pkg_name:-$cmd}"
+    
+    if ! command -v "$cmd" &>/dev/null; then
+        echo -e "\e[33mInstalling $pkg_name...\e[0m"
+        pkg install -y "$pkg_name"
+        echo ""
+    fi
+done
 
-# Check and install wget if not installed
-if ! is_package_installed_command "wget"; then
-    echo -e "\e[33mInstalling wget...\e[0m"
-    pkg install -y wget
-    echo ""
-fi
-
-# Check and install tput if not installed
-if ! is_package_installed_command "tput"; then
-    echo -e "\e[33mInstalling ncurses-utils...\e[0m"
-    pkg install -y ncurses-utils
-    echo ""
-fi
-
-# Install Ruby if not installed
-if ! is_package_installed_command "ruby"; then
-    echo -e "\e[33mInstalling Ruby...\e[0m"
-    pkg install -y ruby
-    echo ""
-fi
-
-# Install the 'lolcat' gem if not installed
-if ! command -v lolcat &>/dev/null; then
-    echo -e "\e[33mInstalling the 'lolcat' gem...\e[0m"
-    gem install lolcat
-    echo ""
-fi
-
-# Install Git if not installed
-if ! is_package_installed_command "git"; then
-    echo -e "\e[33mInstalling Git...\e[0m"
-    pkg install -y git
-    echo ""
-fi
+# Install Ruby gems
+for gem_name in "${GEM_PACKAGES[@]}"; do
+    if ! command -v "$gem_name" &>/dev/null; then
+        echo -e "\e[33mInstalling the '$gem_name' gem...\e[0m"
+        gem install "$gem_name"
+        echo ""
+    fi
+done
 
 # Completion message
 echo ""
@@ -127,20 +104,24 @@ echo ""
 # Final summary
 print_line "Installation Summary" "-" "\e[34m"
 
-# Function to check and display the installation status of each dependency
-check_and_display() {
-    if is_package_installed_command "$1"; then
-        echo -e "$1: \e[32mInstalled\e[0m"
+# Check packages
+for pkg_entry in "${PKG_PACKAGES[@]}"; do
+    IFS=':' read -r cmd pkg_name <<< "$pkg_entry"
+    
+    if command -v "$cmd" &>/dev/null; then
+        echo -e "$cmd: \e[32mInstalled\e[0m"
     else
-        echo -e "$1: \e[31mNot installed (Error)\e[0m"
+        echo -e "$cmd: \e[31mNot installed (Error)\e[0m"
     fi
-}
+done
 
-check_and_display "curl"
-check_and_display "wget"
-check_and_display "lolcat"
-check_and_display "tput"
-check_and_display "ruby"
-check_and_display "git"
+# Check gems
+for gem_name in "${GEM_PACKAGES[@]}"; do
+    if command -v "$gem_name" &>/dev/null; then
+        echo -e "$gem_name: \e[32mInstalled\e[0m"
+    else
+        echo -e "$gem_name: \e[31mNot installed (Error)\e[0m"
+    fi
+done
 
 print_line "" "-" "\e[34m"
