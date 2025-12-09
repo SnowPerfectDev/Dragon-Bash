@@ -54,7 +54,7 @@ is_package_installed_command() {
 # Function to check if a package is installed
 is_package_installed() {
    package_name="$1"
-   if [ "$(apt -l | grep -w "ii  $package_name")" ]; then
+   if [ "$(dpkg -l | grep -w "ii  $package_name")" ]; then
        return 0 # Package is installed
    else
        return 1 # Package is not installed
@@ -70,39 +70,39 @@ echo ""
 
 # Update repositories and packages
 echo -e "\e[33mUpdating repositories and packages...\e[0m"
-yes | apt update
+yes | pkg update
 echo ""
 
 # Perform upgrade
 echo -e "\e[33mPerforming package upgrade...\e[0m"
-yes | apt upgrade
+yes | pkg upgrade
 echo ""
 
 # Check and install curl if not installed
 if ! is_package_installed_command "curl"; then
     echo -e "\e[33mInstalling curl...\e[0m"
-    yes | apt install curl
+    yes | pkg install curl
     echo ""
 fi
 
 # Check and install wget if not installed
 if ! is_package_installed_command "wget"; then
     echo -e "\e[33mInstalling wget...\e[0m"
-    yes | apt install wget
+    yes | pkg install wget
     echo ""
 fi
 
 # Check and install tput if not installed
 if ! is_package_installed_command "tput"; then
     echo -e "\e[33mInstalling tput...\e[0m"
-    yes | apt install ncurses-utils
+    yes | pkg install ncurses-utils
     echo ""
 fi
 
 # Install Ruby if not installed
 if ! is_package_installed_command "ruby"; then
     echo -e "\e[33mInstalling Ruby...\e[0m"
-    yes | apt install ruby
+    yes | pkg install ruby
     echo ""
 fi
 
@@ -116,7 +116,7 @@ fi
 # Install Git if not installed
 if ! is_package_installed_command "git"; then
     echo -e "\e[33mInstalling Git...\e[0m"
-    yes | apt install git
+    yes | pkg install git
     echo ""
 fi
 
