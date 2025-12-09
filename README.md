@@ -12,15 +12,21 @@ This script was developed for personal use and customization of Termux settings.
 
 To ensure the script functions correctly, make sure you have the following dependencies installed:
 
-- **curl**: A command-line tool for transferring data with URLs. The script uses `curl` to download configuration files.
+### Required Dependencies
 
-- **git**: A distributed version control system. The script may need `git` to clone the GitHub repository containing the configurations.
+- **curl**: A command-line tool for transferring data with URLs. The script uses curl to download configuration files.
 
-- **ruby (optional)**: `lolcat` is a tool that colors terminal output. If you wish to use `lolcat` to add colors to the script output, you'll need Ruby installed to install `lolcat`.
-
-- **tput**: A tool that provides terminal screen control to manipulate colors, cursor, among others. The script may use `tput` to enhance output formatting.
+- **git**: A distributed version control system. The script may need git to clone the GitHub repository containing the configurations.
 
 - **wget**: A command-line tool for transferring data via URLs. It's commonly used for downloading files from the web, offering options to control file output, transfer rate, among others. It's useful for automation and administrative tasks.
+
+- **tput** (ncurses-utils): A tool that provides terminal screen control to manipulate colors, cursor, among others. The script uses tput to enhance output formatting.
+
+### Optional Dependencies
+
+- **ruby**: Required to install lolcat gem.
+
+- **lolcat**: A Ruby gem that colors terminal output with rainbow effects. If you wish to use lolcat to add colorful effects to the script output, you'll need both Ruby and this gem installed.
 
 ### Command
 ```bash
