@@ -70,12 +70,12 @@ echo ""
 
 # Update repositories and packages
 echo -e "\e[33mUpdating repositories and packages...\e[0m"
-pkg update -y
+yes | pkg update
 echo ""
 
 # Perform upgrade
 echo -e "\e[33mPerforming package upgrade...\e[0m"
-pkg upgrade -y
+yes | pkg upgrade 
 echo ""
 
 # Install PKG packages
